@@ -21,7 +21,7 @@ Follow these steps to set up the project on your local development environment:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/blood-donor-website.git
+https://github.com/ATIF176/Donor.git
    cd blood-donor-website
    ```
 
