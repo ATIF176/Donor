@@ -1,0 +1,78 @@
+{% extends 'partials/index.html' %}
+{% load static %}
+
+{% block title %}
+Donor List
+{% endblock title %}
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+{% include "partials/navbar.html" %}
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block text-center">
+                    <span class="text-white">Our Donors</span>
+                    <h1 class="text-capitalize mb-5 text-lg">Are you know?</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="section service-2">
+    <div class="container">
+        <div class="ml-6 mt-4 mb-4">
+            <label class="p-2" for="city-filter">City:</label>
+            <select id="city-filter">
+                <option value="all">All</option>
+                <option value="Narowal">Narowal</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Karachi">Karachi</option>
+            </select>
+        
+            <label class="p-2" for="blood-group-filter">Blood Group:</label>
+            <select id="blood-group-filter">
+                <option value="all">All</option>
+                <option value="O+">O+</option>
+                <!-- Add other blood groups here -->
+            </select>
+        
+            <label class="p-2" for="age-filter">Age:</label>
+            <input type="number" id="age-filter" placeholder="Age">
+        </div>
+        <div class="row">
+            {% for donor in donors %}
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-block mb-5">
+                    <div class="profile-image">
+                        <div class="donor-img">
+                            <a href="{% url 'profile' donor.pk %}"><img src="{{ donor.img.url }}" alt="donor-image"
+                            class="img-fluid rounded-circle"></a>
+                            <div class="city-label"><strong>City:</strong> {{ donor.city }}</div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="mt-4 mb-2 title-color">{{ donor.fname }} {{ donor.lname }}</h4>
+                        <p class="mb-2"><strong>Blood Group:</strong> {{ donor.bgroup }}</p>
+                        <p class="mb-2"><strong>Contact:</strong> {{ donor.phone }}</p>
+                        <p><strong>Age:</strong> {{ donor.dob }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% include "partials/footer.html" %}
+{% endblock body %}
+
+{% block scripts %}
+{% endblock scripts %}
