@@ -1,3 +1,5 @@
+Certainly! A well-crafted README is an essential part of any software project, as it provides valuable information to users, developers, and contributors. Here's an example of a README for your blood donor website built using Django, HTML, CSS, Bootstrap, AJAX, jQuery, and JavaScript:
+
 # Blood Donor Website
 
 Welcome to the Blood Donor Website! This website is designed to facilitate blood donation and connect donors with those in need. It is built using Django, HTML, CSS, Bootstrap, AJAX, jQuery, and JavaScript to provide a responsive and user-friendly experience.
@@ -21,7 +23,7 @@ Follow these steps to set up the project on your local development environment:
 1. Clone the repository:
 
    ```bash
-https://github.com/ATIF176/Donor.git
+   git clone https://github.com/ATIF176/donor.git
    cd blood-donor-website
    ```
 
