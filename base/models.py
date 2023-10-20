@@ -10,7 +10,8 @@ class DonorRegister(models.Model):
     bgroup = models.CharField(max_length=3, blank=False, null=False)
     donorid = models.CharField(max_length=10, unique=True)    
     more = models.TextField(null=True, blank=True)
-    dob = models.DateField(null=True, blank=True)
+    dob = models.DateField(null=False, blank=False)
+    ldonation = models.DateField(null=True, blank=True)
     img = models.ImageField(upload_to='images/', null=True, blank=True)
     
     def __str__(self):

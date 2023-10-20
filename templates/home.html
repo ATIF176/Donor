@@ -9,6 +9,7 @@ HOME
 
 {% block body %}
 {% include "partials/navbar.html" %}
+{% include "partials/messaging_info.html" %}
 <!-- Slider Start -->
 <section class="banner">
 	<div class="container">
@@ -21,7 +22,7 @@ HOME
 					
 					<p class="mb-4 pr-5">Your blood donation can make a significant difference. Join us in our mission to save lives and give the gift of life to those in need.</p>
 					<div class="btn-container">
-						<a href="{% url 'register' %}" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Donate Blood Now <i class="icofont-simple-right ml-2"></i></a>
+						<a href="{% url 'register' %}" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Register as Donor<i class="icofont-simple-right ml-2"></i></a>
 					</div>
 				</div>
 			</div>

@@ -12,6 +12,9 @@ def about(request):
 def contact(request):
     return render(request, "contact.html")
 
+def confirm(request):
+    return render(request, "confirmation.html")
+
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST, request.FILES)

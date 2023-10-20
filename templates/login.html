@@ -17,16 +17,10 @@ Login
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
+                    {% include "partials/messaging_info.html" %}
                     <div class="card">
                         <div class="secondary-bg text-md text-white text-center">Login</div>
                         <div class="card-body">
-                            {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                                    {% endfor %}
-                            </ul>
-                            {% endif %}
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="email">Email</label>

@@ -5,4 +5,4 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = DonorRegister
         
-        fields = ['fname', 'lname', 'email', 'city', 'phone', 'donorid', 'bgroup', 'more', 'dob', 'img']
+        fields = ['fname', 'lname', 'email', 'city', 'phone', 'donorid', 'bgroup', 'more', 'dob', 'img', 'ldonation']

@@ -23,7 +23,7 @@ Register as a Donor
 	</div>
 </section>
 
-<section class="donor-registration ">
+<section class="section donor-registration ">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">
@@ -111,6 +111,12 @@ Register as a Donor
 							</div>
 							<div class="col-lg-6">
 								<div class="form-group">
+									<label for="ldonation">Last Donation</label>
+									<input name="ldonation" id="ldonation" type="date" class="form-control">
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
 									<label for="img">Profile Image</label>
 									<input name="img" id="img" type="file" class="form-control">
 								</div>
@@ -138,7 +144,7 @@ Register as a Donor
 								placeholder="Write about yourself..."></textarea>
 						</div>
 
-						<button id="submit-button" class="btn btn-main btn-round-full" type="submit">Register as a Donor
+						<button id="submit-button" class="btn btn-main btn-round-full" type="submit">Register
 							<i class="icofont-simple-right ml-2"></i></button>
 					</form>
 				</div>
@@ -147,6 +153,9 @@ Register as a Donor
 	</div>
 </section>
 {% include "partials/footer.html" %}
+{% endblock body %}
+
+{% block scripts %}
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
 		// Get references to form elements
@@ -179,7 +188,4 @@ Register as a Donor
 	});
 
 </script>
-{% endblock body %}
-
-{% block scripts %}
 {% endblock scripts %}

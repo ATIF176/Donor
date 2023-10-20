@@ -63,16 +63,38 @@ Donor List
                         <h4 class="mt-4 mb-2 title-color">{{ donor.fname }} {{ donor.lname }}</h4>
                         <p class="mb-2"><strong>Blood Group:</strong> {{ donor.bgroup }}</p>
                         <p class="mb-2"><strong>Contact:</strong> {{ donor.phone }}</p>
-                        <p><strong>Age:</strong> {{ donor.dob }}</p>
+                        <p id="dob_{{ donor.pk }}"><strong>Age:</strong> {{ donor.dob }}</p>
                     </div>
                 </div>
             </div>
+            <script>
+                // Get the Date of Birth element
+                var dobElement = document.getElementById("dob_{{ donor.pk }}");
+                if (dobElement) {
+                    // Parse the Date of Birth string
+                    var dobString = dobElement.textContent.trim();
+                    var dob = new Date(dobString);
+                    var today = new Date();
+
+                    var age = today.getFullYear() - dob.getFullYear();
+
+                    // Check if the birthday hasn't occurred yet this year
+                    if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+                        age--;
+                    }
+
+                    // Create and append a new element to display the calculated age
+                    var ageElement = document.createElement("p");
+                    ageElement.innerHTML = "<strong>Age:</strong> " + age + " years";
+                    dobElement.parentNode.appendChild(ageElement);
+                }
+            </script>
             {% endfor %}
         </div>
     </div>
 </section>
 {% include "partials/footer.html" %}
-{% endblock body %}
-
 {% block scripts %}
 {% endblock scripts %}
+{% endblock body %}
+
