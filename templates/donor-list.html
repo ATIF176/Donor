@@ -15,80 +15,39 @@ Donor List
         <div class="row">
             <div class="col-md-12">
                 <div class="block text-center">
-                    <span class="text-white">Our Donors</span>
-                    <h1 class="text-capitalize mb-5 text-lg">Are you know?</h1>
+                    <form action="{% url 'donorlist' %}" method="GET" class="header__search" autocomplete="off">
+                        <label>
+                            <input name="q" class="form-control me-2" type="search" value="{{ request.GET.q }}"
+                                placeholder="Search for donor">
+                        </label>
+                        <button class="btn btn-outline-danger" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-
-
-
 <section class="section service-2">
     <div class="container">
-        <div class="ml-6 mt-4 mb-4">
-            <label class="p-2" for="city-filter">City:</label>
-            <select id="city-filter">
-                <option value="all">All</option>
-                <option value="Narowal">Narowal</option>
-                <option value="Lahore">Lahore</option>
-                <option value="Karachi">Karachi</option>
-            </select>
-        
-            <label class="p-2" for="blood-group-filter">Blood Group:</label>
-            <select id="blood-group-filter">
-                <option value="all">All</option>
-                <option value="O+">O+</option>
-                <!-- Add other blood groups here -->
-            </select>
-        
-            <label class="p-2" for="age-filter">Age:</label>
-            <input type="number" id="age-filter" placeholder="Age">
-        </div>
         <div class="row">
             {% for donor in donors %}
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="service-block mb-5">
                     <div class="profile-image">
                         <div class="donor-img">
-                            <a href="{% url 'profile' donor.pk %}"><img src="{{ donor.img.url }}" alt="donor-image"
-                            class="img-fluid rounded-circle"></a>
-                            <div class="city-label"><strong>City:</strong> {{ donor.city }}</div>
+                            <a href="{% url 'donor-profile' donor.pk %}"><img src="{{ donor.img.url }}"
+                                    alt="donor-image" class="img-fluid rounded-circle"></a>
                         </div>
                     </div>
                     <div class="content">
                         <h4 class="mt-4 mb-2 title-color">{{ donor.fname }} {{ donor.lname }}</h4>
                         <p class="mb-2"><strong>Blood Group:</strong> {{ donor.bgroup }}</p>
-                        <p class="mb-2"><strong>Contact:</strong> {{ donor.phone }}</p>
-                        <p id="dob_{{ donor.pk }}"><strong>Age:</strong> {{ donor.dob }}</p>
+                        <p><strong>Age:</strong> {{ donor.dob|timesince }}</p>
+                        <p><strong>City:</strong> {{ donor.city }}</p>
                     </div>
                 </div>
             </div>
-            <script>
-                // Get the Date of Birth element
-                var dobElement = document.getElementById("dob_{{ donor.pk }}");
-                if (dobElement) {
-                    // Parse the Date of Birth string
-                    var dobString = dobElement.textContent.trim();
-                    var dob = new Date(dobString);
-                    var today = new Date();
-
-                    var age = today.getFullYear() - dob.getFullYear();
-
-                    // Check if the birthday hasn't occurred yet this year
-                    if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
-                        age--;
-                    }
-
-                    // Create and append a new element to display the calculated age
-                    var ageElement = document.createElement("p");
-                    ageElement.innerHTML = "<strong>Age:</strong> " + age + " years";
-                    dobElement.parentNode.appendChild(ageElement);
-                }
-            </script>
             {% endfor %}
         </div>
     </div>
@@ -97,4 +56,3 @@ Donor List
 {% block scripts %}
 {% endblock scripts %}
 {% endblock body %}
-

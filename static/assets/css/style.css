@@ -751,18 +751,18 @@ a:focus {
   border-radius: 3px;
 }
 
-.doctor-inner-box {
+.donor-inner-box {
   overflow: hidden;
 }
-.doctor-inner-box .doctor-profile {
+.donor-inner-box .donor-profile {
   overflow: hidden;
   position: relative;
   box-shadow: 0px 8px 16px 0px rgba(200, 183, 255, 0.2);
 }
-.doctor-inner-box .doctor-profile .doctor-img {
+.donor-inner-box .donor-profile .donor-img {
   transition: all 0.35s ease;
 }
-.doctor-inner-box .doctor-profile .doctor-img:hover {
+.donor-inner-box .donor-profile .donor-img:hover {
   transform: scale(1.1);
 }
 
@@ -770,11 +770,11 @@ a:focus {
   line-height: 35px;
 }
 
-.doctor-info li {
+.donor-info li {
   margin-bottom: 10px;
   color: #222;
 }
-.doctor-info li i {
+.donor-info li i {
   margin-right: 20px;
   color: #e12454;
 }
