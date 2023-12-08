@@ -8,7 +8,6 @@ Login
 {% endblock css %}
 
 {% block body %}
-{% include "partials/navbar.html" %}
 <section>
     <form id="donor-registration-form" method="post" enctype="multipart/form-data" action="{% url 'login' %}">
         {% csrf_token %}
@@ -45,7 +44,6 @@ Login
         </div>
     </form>
 </section>
-{% include "partials/footer.html" %}
 
 {% block scripts %}
 {% endblock scripts %}

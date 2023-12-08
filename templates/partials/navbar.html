@@ -24,8 +24,11 @@
 					<li class="nav-item"><a class="nav-link" href="{% url 'donorlist' %}">Donor's</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
 					<li class="nav-item"> <a class="nav-link" href="{% url 'profile' %}">
-							<img src="{% static 'assets/images/team/1.jpg' %}" alt="Profile Image" class="rounded-circle"
-								width="30" height="30">
+							{% if user_image_url %}
+							<img src="{{ user_image_url }}" class="rounded-circle" width="45" height="45" alt="img">
+							{% else %} 
+							<img src="{% static 'assets/images/default.png' %}" class="rounded-circle" width="45" height="45" alt="img">
+							{% endif %}
 						</a></li>
 					{% endif %}
 				</ul>

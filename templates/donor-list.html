@@ -8,7 +8,6 @@ Donor List
 {% endblock css %}
 
 {% block body %}
-{% include "partials/navbar.html" %}
 <section class="page-title bg-1">
     <div class="overlay"></div>
     <div class="container">
@@ -18,10 +17,17 @@ Donor List
                     <form action="{% url 'donorlist' %}" method="GET" class="header__search" autocomplete="off">
                         <label>
                             <input name="q" class="form-control me-2" type="search" value="{{ request.GET.q }}"
-                                placeholder="Search for donor">
+                                placeholder="City or Donor Name">
                         </label>
-                        <button class="btn btn-outline-danger" type="submit">Search</button>
+                        <label>
+                            <input name="p" class="form-control me-2" type="search" value="{{ request.GET.p }}"
+                                placeholder="Blood Group">
+                        </label> 
+                        <br>
+                        <button class="btn btn-outline-info" type="submit">Search</button>
+                        <a href="{% url 'donorlist' %}" class="btn btn-outline-secondary" role="button">Clear Filters</a>
                     </form>
+                    
                 </div>
             </div>
         </div>
@@ -52,7 +58,6 @@ Donor List
         </div>
     </div>
 </section>
-{% include "partials/footer.html" %}
 {% block scripts %}
 {% endblock scripts %}
 {% endblock body %}

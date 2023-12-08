@@ -8,7 +8,6 @@ SignUp
 {% endblock css %}
 
 {% block body %}
-{% include "partials/navbar.html" %}
 {% include "partials/messaging_info.html" %}
 <section>
     <form id="donor-registration-form" method="post" enctype="multipart/form-data" action="{% url 'signup' %}">
@@ -51,7 +50,6 @@ SignUp
         </div>
     </form>
 </section>
-{% include "partials/footer.html" %}
 
 {% block scripts %}
 {% endblock scripts %}

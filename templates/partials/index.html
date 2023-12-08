@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 
   <!-- Basic Page Needs
@@ -16,7 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="author" content="help4life">
   <meta name="generator" content="help4life">
-  
+
   <!-- theme meta -->
   <meta name="theme-name" content="help4life" />
 
@@ -26,7 +27,7 @@
   <!-- 
   Essential stylesheets
   =====================================-->
-  <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/bootstrap.min.css' %}" >
+  <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'assets/plugins/icofont/icofont.min.css' %}">
   <link rel="stylesheet" href="{% static 'assets/plugins/slick-carousel/slick/slick.css' %}">
   <link rel="stylesheet" href="{% static 'assets/plugins/slick-carousel/slick/slick-theme.css' %}">
@@ -40,30 +41,32 @@
 </head>
 
 <body id="top">
+  {% include "partials/navbar.html" %}
 
-    {% block body %}
+  {% block body %}
 
-    {% endblock body %}
+  {% endblock body %}
 
+  {% include "partials/footer.html" %}
 
-
-   <!-- 
+  <!-- 
     Essential Scripts
     =====================================-->
-    <script src="{% static 'assets/plugins/jquery/jquery.js' %}"></script>
-    <script src="{% static 'assets/plugins/bootstrap/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/slick-carousel/slick/slick.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/shuffle/shuffle.min.js' %}"></script>
+  <script src="{% static 'assets/plugins/jquery/jquery.js' %}"></script>
+  <script src="{% static 'assets/plugins/bootstrap/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/plugins/slick-carousel/slick/slick.min.js' %}"></script>
+  <script src="{% static 'assets/plugins/shuffle/shuffle.min.js' %}"></script>
 
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA"></script>
-    <script src="{% static 'assets/plugins/google-map/gmap.js' %}"></script>
-    
-    <script src="{% static 'assets/js/script.js' %}"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA"></script>
+  <script src="{% static 'assets/plugins/google-map/gmap.js' %}"></script>
 
-	{% block scripts %}
+  <script src="{% static 'assets/js/script.js' %}"></script>
 
-	{% endblock scripts %}
+  {% block scripts %}
 
-  </body>
-  </html>
+  {% endblock scripts %}
+
+</body>
+
+</html>

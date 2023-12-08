@@ -8,7 +8,6 @@ Register as a Donor
 {% endblock css %}
 
 {% block body %}
-{% include "partials/navbar.html" %}
 
 <section class="section donor-registration ">
 	<div class="container">
@@ -19,14 +18,14 @@ Register as a Donor
 					<h2 class="mb-2 title-color">Donor Registration Form</h2>
 					<p class="mb-4">Thank you for considering becoming a blood donor. Please fill out the registration
 						form below to get started.</p>
-					<form id="donor-registration-form" method="post" enctype="multipart/form-data" action="">
+					<form id="donor-registration-form" autocomplete="off" method="post" enctype="multipart/form-data" action="">
 						{% csrf_token %}
 						{{ form.non_field_errors }} <!-- Display non-field errors if any -->
 						{% for field in form %}
 						{{ field.label_tag }}
 						{{ field }}
 						{% endfor %}
-						<button id="submit-button" class="btn btn-main btn-round-full" type="submit">Confirm
+						<button id="submit-button" class="btn btn-main btn-round-full mt-3" type="submit">Confirm
 							<i class="icofont-simple-right ml-2"></i></button>
 					</form>
 				</div>
@@ -34,40 +33,7 @@ Register as a Donor
 		</div>
 	</div>
 </section>
-{% include "partials/footer.html" %}
 {% endblock body %}
 
 {% block scripts %}
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		// Get references to form elements
-		const lnameInput = document.getElementById('id_lname');
-		const phoneInput = document.getElementById('id_phone');
-		const donoridInput = document.getElementById('id_donorid');
-		const form = document.getElementById('donor-registration-form'); // Get the form element
-
-		// Add event listeners to the last name and phone inputs
-		lnameInput.addEventListener('input', updateDonorId);
-		phoneInput.addEventListener('input', updateDonorId);
-
-		// Function to update donorid based on last name and last three digits of phone
-		function updateDonorId() {
-			const lname = lnameInput.value;
-			const phone = phoneInput.value;
-
-			// Extract the last three digits of the phone number
-			const lastThreeDigits = phone.slice(-3);
-			const firstThreealpha = lname.slice(0, 3);
-
-			// Set donorid to last name + last three digits of phone
-			donoridInput.value = firstThreealpha + lastThreeDigits;
-		}
-
-		// Submit the form when the button is clicked
-		document.getElementById('submit-button').addEventListener('click', function () {
-			form.submit();
-		});
-	});
-
-</script>
 {% endblock scripts %}
