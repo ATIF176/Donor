@@ -12,6 +12,8 @@ from django.views.generic.edit import DeleteView, FormView
 from .forms import RegisterForm, ContactForm
 from .models import DonorRegister
 from django.db.models import Q
+from datetime import timedelta
+from django.utils import timezone
 
 
 
@@ -46,7 +48,7 @@ class ContactView(FormView):
             fail_silently=False,
         )
 
-        messages.success(self.request, 'Email sent successfully.')
+        messages.success(self.request, 'Message sent successfully.')
 
         return super().form_valid(form)
 
@@ -102,6 +104,10 @@ class DonorView(View):
         donor = DonorRegister.objects.get(pk=pk)
         context = {'donor': donor}
         return render(request, self.template_name, context)
+    
+class HealthTipsView(TemplateView):
+    template_name = "health-tips.html"
+
 
 class DonorListView(ListView):
     template_name = "donor-list.html"
@@ -120,20 +126,25 @@ class DonorListView(ListView):
                     Q(city__icontains=name_or_city) |
                     Q(fname__icontains=name_or_city) |
                     Q(lname__icontains=name_or_city),
-                    Q(bgroup__icontains=blood_group)
+                    Q(bgroup__icontains=blood_group),
+                    Q(ldonation__lte=timezone.now() - timedelta(days=56))
                 ).order_by('-dob')
             else:
                 if name_or_city:
                     queryset = DonorRegister.objects.filter(
                         Q(city__icontains=name_or_city) |
                         Q(fname__icontains=name_or_city) |
-                        Q(lname__icontains=name_or_city)
+                        Q(lname__icontains=name_or_city),
+                        Q(ldonation__lte=timezone.now() - timedelta(days=56))
                     ).order_by('-dob')
                 else:
                     queryset = DonorRegister.objects.filter(
-                        Q(bgroup__icontains=blood_group)
+                        Q(bgroup__icontains=blood_group),
+                        Q(ldonation__lte=timezone.now() - timedelta(days=56))
                     ).order_by('-dob')
         else:
-            queryset = DonorRegister.objects.all().order_by('-dob')
+            queryset = DonorRegister.objects.filter(
+                Q(ldonation__lte=timezone.now() - timedelta(days=56))
+            ).order_by('-dob')
 
         return queryset
